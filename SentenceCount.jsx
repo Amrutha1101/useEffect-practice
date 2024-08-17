@@ -4,14 +4,15 @@ export const SentenceCount = () => {
   const [countSentences, setCountSentences] = useState(0);
   const handleChange = (e) => {
     setPara({ ...para, [e.target.name]: e.target.value });
-    if (e.target.value.endsWith(".")) {
+    if (e.key === ".") {
       setCountSentences((prevCountSentences) => prevCountSentences + 1);
     }
   };
 
   return (
     <>
-      <input type="text" name="para" onChange={handleChange} />
+      <input type="text" name="para" onKeyPress={handleChange} />
+      <p>{countSentences}</p>
     </>
   );
 };
